@@ -20,3 +20,23 @@ OUTPUTFORMAT
 LOCATION
   's3://quicksight-demo2/usa-zipcode-list'
 TBLPROPERTIES ("skip.header.line.count"="1");
+
+
+-- this is to create a table for Census stats by Zip
+-- datafile is in S3 csv format
+create external table quicksightdemo.usacensus_by_zip (
+  ZIPCODE INT, 
+  MEDIANINCOME INT, 
+  MEANINCOME INT,
+  POPULATIONCOUNT INT 
+   )
+ROW FORMAT DELIMITED 
+  FIELDS TERMINATED BY ',' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  's3://quicksight-demo2/USACensus'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
