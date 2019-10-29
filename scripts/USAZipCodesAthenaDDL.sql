@@ -25,7 +25,7 @@ TBLPROPERTIES ("skip.header.line.count"="1");
 -- this is to create a table for Census stats by Zip
 -- datafile is in S3 csv format
 create external table quicksightdemo.usacensus_by_zip (
-  ZIPCODE INT, 
+  ZIPCODE STRING, 
   MEDIANINCOME INT, 
   MEANINCOME INT,
   POPULATIONCOUNT INT 
