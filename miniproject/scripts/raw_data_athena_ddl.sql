@@ -99,8 +99,7 @@ create external table quicksightproject.VOTER_RAW (
   `Y_2018_MAY` STRING,
   `Y_2018_NOV` STRING,
   `Y_2019_OCT` STRING)
-ROW FORMAT DELIMITED 
-  FIELDS TERMINATED BY ',' 
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' 
 STORED AS INPUTFORMAT 
   'org.apache.hadoop.mapred.TextInputFormat' 
 OUTPUTFORMAT 
